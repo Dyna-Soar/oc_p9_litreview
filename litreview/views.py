@@ -103,12 +103,10 @@ def update_ticket(request, ticket_id):
     ticket = Ticket.objects.get(id=ticket_id)
     if request.method == "POST":
         ticket_update = Ticket.objects.get(id=ticket_id)
-        form_ticket = UploadTicketForm(request.POST, request.FILES)
-        ticket_update.title = form_ticket["title"]
-        ticket_update.description = form_ticket["description"]
-        ticket_update.image = form_ticket["image"]
-        ticket_update.save()
-        return HttpResponseRedirect(reverse("view-posts"))
+        form_ticket = UploadTicketForm(request.POST, request.FILES, instance=ticket_update)
+        if form_ticket.is_valid():
+            form_ticket.save()
+            return HttpResponseRedirect(reverse("view-posts"))
     else:
         form_ticket = UploadTicketForm(initial={"user": request.user,
                                                 "title": ticket.title,
