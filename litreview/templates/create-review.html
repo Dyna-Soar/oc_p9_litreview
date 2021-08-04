@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h4>Créer une critique</h4>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <h4>Livre/Article</h4>
+            <div>
+                <h5>Titre</h5>
+                {{ form_ticket.title }}
+                <h5>Description</h5>
+                {{ form_ticket.description }}
+                <br>
+                {{ form_ticket.image }}
+                {{ form_ticket.user.as_hidden }}
+            </div>
+        </div>
+        <hr>
+        <div>
+            <h4>Critique</h4>
+            <div>
+                <h5>Titre</h5>
+                {{ form_review.headline }}
+                <h5>Note</h5>
+                {{ form_review.rating }}
+                <h5>Commentaire</h5>
+                {{ form_review.body }}
+                {{ form_review.user.as_hidden }}
+            </div>
+        </div>
+        <button>Envoyer</button>
+    </form>
+{% endblock %}

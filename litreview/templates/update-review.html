@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h4>Modifier votre critique</h4>
+    <div>
+        <h5>Vous êtes en train de poster votre réponse à:</h5>
+        <div>
+            {{ review.user }} a demandé une critique<br>
+            Titre: {{ review.headline }}<br>
+            Commentaire: {{ review.body }}<br>
+            Note: {{ review.rating }}<br>
+        </div>
+    </div>
+    <br><hr><br>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <div>
+                Titre: {{ form_review.headline }}<br>
+                Commentaire: {{ form_review.body }}<br>
+                Note: {{ form_review.rating }}<br>
+                {{ form_review.ticket.as_hidden }}
+                {{ form_review.user.as_hidden }}
+            </div>
+            <button>Envoyer</button>
+        </div>
+
+    </form>
+{% endblock %}

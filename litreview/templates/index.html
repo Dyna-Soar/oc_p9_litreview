@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% if user is authenticated %}
+        {% url 'feed' %}
+    {% endif %}
+    <h2>Inscrivez-vous maintenant</h2>
+    <a href="{% url 'register' %}"><button>S'inscrire</button></a>
+    <h2>Connectez vous</h2>
+    <form method="post">
+     {% csrf_token %}
+     <input name="username" placeholder="Nom d'utilisateur">
+     <input name="password" placeholder="Mot de Passe">
+     <button>Se connecter</button>
+    </form>
+{% endblock %}

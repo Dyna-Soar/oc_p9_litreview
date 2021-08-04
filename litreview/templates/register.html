@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h2>Inscrivez-vous maintenant</h2>
+    <h2>Connectez vous</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input name="username" placeholder="Nom d'utilisateur">
+        <input name="email" type="email" placeholder="Email">
+        <input name="password" type="password" placeholder="Mot de Passe">
+        <input name="confirmation" type="password" placeholder="Confirmer mot de passe">
+        <button>S'inscrire</button>
+    </form>
+    <a href="{% url 'index' %}"><button>Retourner</button></a>
+{% endblock %}

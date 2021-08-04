@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>This is your posts page</h1>
+
+    <div>
+     <h5>Vous avez publié une critique</h5>
+    </div>
+    {% for ticket in tickets %}
+        <div>
+            {{ ticket.title }}<br>
+            {{ ticket.description }}<br>
+            {{ ticket.user }}<br>
+            <img src="{{ ticket.image.url }}" widht="200px" height="200px"><br>
+            {{ ticket.time_created }}<br>
+            <a href={% url 'update-ticket' ticket_id=ticket.id %}><button>Modifier le ticket</button></a>
+        </div>
+        <br><hr>
+    {% endfor %}
+    <br><hr><br>
+    {% for review in reviews %}
+        <div>
+            {{ review.headline }}<br>
+            {{ review.body }}<br>
+            {{ review.rating }}<br>
+            {{ review.user }}<br>
+            {{ review.time_created }}<br>
+            {{ review.ticket.title }}<br>
+            {{ review.ticket.description }}<br>
+            {{ review.ticket.user }}<br>
+            <img src="{{ review.ticket.image.url }}" widht="200px" height="200px"><br>
+            {{ review.ticket.time_created }}<br>
+        <a href={% url 'update-review' review_id=review.id %}><button>Modifier la critique</button></a>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}
