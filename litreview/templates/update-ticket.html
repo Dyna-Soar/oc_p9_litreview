@@ -4,7 +4,8 @@
     {{ ticket.title }}<br>
     {{ ticket.description }}<br>
     <img src="{{ ticket.image.url }}" widht="200px" height="200px"><br>
-    <h4>Créer un ticket</h4>
+    <br><hr><br>
+    <h4>Changer le ticket</h4>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
@@ -15,7 +16,8 @@
                 <h5>Description</h5>
                 {{ form_ticket.description }}
                 <br>
-                <img src="{{ form_ticket.image.url }}" widht="200px" height="200px"><br>
+                <img src="{{ ticket.image.url }}" widht="200px" height="200px"><br>
+                {{ form_ticket.image }}
                 {{ form_ticket.user.as_hidden }}
             </div>
         </div>
