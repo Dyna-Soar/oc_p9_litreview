@@ -1,15 +1,22 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <h2>Inscrivez-vous maintenant</h2>
-    <h2>Connectez vous</h2>
+    <h2 class="form-signin-heading" style="text-align: center">Inscrivez-vous</h2>
     <form method="post">
         {% csrf_token %}
-        <input name="username" placeholder="Nom d'utilisateur">
-        <input name="email" type="email" placeholder="Email">
-        <input name="password" type="password" placeholder="Mot de Passe">
-        <input name="confirmation" type="password" placeholder="Confirmer mot de passe">
-        <button>S'inscrire</button>
+        <div class="mb-3">
+            <input name="username" placeholder="Nom d'utilisateur" class="form-control" style="text-align: center"><br>
+            <input name="email" type="email" placeholder="Email" class="form-control" style="text-align: center"><br>
+            <input name="password" type="password" placeholder="Mot de Passe" class="form-control" style="text-align: center"><br>
+            <input name="confirmation" type="password" placeholder="Confirmer mot de passe" class="form-control" style="text-align: center"><br>
+            <div class="row">
+                <div class="span6" style="margin-left: 600px">
+                    <a href="{% url 'index' %}"><button class="btn btn-large btn-primary">Retourner</button></a>
+                </div>
+                <div class="span6" style="margin-left: 1200px">
+                    <button class="btn btn-large btn-primary">S'inscrire</button>
+                </div>
+            </div>
+        </div>
     </form>
-    <a href="{% url 'index' %}"><button>Retourner</button></a>
 {% endblock %}
