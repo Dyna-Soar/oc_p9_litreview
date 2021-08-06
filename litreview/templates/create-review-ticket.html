@@ -1,42 +1,47 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <div>
-        {{ ticket.title }}<br>
-        {{ ticket.description }}<br>
-        {{ ticket.user }}<br>
-        <img src="{{ ticket.image.url }}" widht="200px" height="200px"><br>
-        {{ ticket.time_created }}<br>
-    </div>
-    <form method="post">
-        {% csrf_token %}
-        <div>
-            <div>
-                <h5>Titre</h5>
-                <input name="headline" id="title_review">
-            </div>
-            <div>
-                <h5>Note</h5>
-                <span>
-                    <input type="radio" id="grade_0" name="rating" value="0">
-                    <label for="grade_0">-0</label>
-                    <input type="radio" id="grade_1" name="rating" value="1">
-                    <label for="grade_1">-1</label>
-                    <input type="radio" id="grade_2" name="rating" value="2">
-                    <label for="grade_2">-2</label>
-                    <input type="radio" id="grade_3" name="rating" value="3">
-                    <label for="grade_3">-3</label>
-                    <input type="radio" id="grade_4" name="rating" value="4">
-                    <label for="grade_4">-4</label>
-                    <input type="radio" id="grade_5" name="rating" value="5">
-                    <label for="grade_5">-5</label>
-                </span>
-            </div>
-            <div>
-                <h5>Commentaire</h5>
-                <textarea name="body" id="comment" rows="4" cols="50"></textarea>
-            </div>
-            <button>Envoyer</button>
+    <div style="border: 2px solid black; margin: 20px">
+        <h4 style="text-align: center">Créer une critique</h4>
+        <h5>Vous êtes en train de poster en réponse à</h5>
+        <div style="border: 2px solid black; margin: 20px">
+            {{ ticket.user }} a demandé une critique<br>
+            {{ ticket.title }}<br>
+            {{ ticket.description }}<br>
+            <img src="{{ ticket.image.url }}" widht="200px" height="200px"><br>
+            {{ ticket.time_created }}<br>
         </div>
-    </form>
+        <hr>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <div>
+                    <h5>Titre</h5>
+                    <input name="headline" id="title_review">
+                </div>
+                <div>
+                    <h5>Note</h5>
+                    <span>
+                        <input type="radio" id="grade_0" name="rating" value="0">
+                        <label for="grade_0">-0</label>
+                        <input type="radio" id="grade_1" name="rating" value="1">
+                        <label for="grade_1">-1</label>
+                        <input type="radio" id="grade_2" name="rating" value="2">
+                        <label for="grade_2">-2</label>
+                        <input type="radio" id="grade_3" name="rating" value="3">
+                        <label for="grade_3">-3</label>
+                        <input type="radio" id="grade_4" name="rating" value="4">
+                        <label for="grade_4">-4</label>
+                        <input type="radio" id="grade_5" name="rating" value="5">
+                        <label for="grade_5">-5</label>
+                    </span>
+                </div>
+                <div>
+                    <h5>Commentaire</h5>
+                    <textarea name="body" id="comment" rows="4" cols="50"></textarea>
+                </div>
+                <button class="btn btn-primary">Envoyer</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}

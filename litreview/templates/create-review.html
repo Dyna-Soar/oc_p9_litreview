@@ -1,34 +1,35 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <h4>Créer une critique</h4>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div>
-            <h4>Livre/Article</h4>
+    <div style="border: 2px solid black; margin: 20px">
+        <h4 style="text-align: center">Créer une critique</h4>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div>
-                <h5>Titre</h5>
-                {{ form_ticket.title }}
-                <h5>Description</h5>
-                {{ form_ticket.description }}
-                <br>
-                {{ form_ticket.image }}
-                {{ form_ticket.user.as_hidden }}
+                <div>
+                    <h5>Titre</h5>
+                    {{ form_ticket.title }}
+                    <h5>Description</h5>
+                    {{ form_ticket.description }}
+                    <br>
+                    {{ form_ticket.image }}
+                    {{ form_ticket.user.as_hidden }}
+                </div>
             </div>
-        </div>
-        <hr>
-        <div>
-            <h4>Critique</h4>
+            <hr>
             <div>
-                <h5>Titre</h5>
-                {{ form_review.headline }}
-                <h5>Note</h5>
-                {{ form_review.rating }}
-                <h5>Commentaire</h5>
-                {{ form_review.body }}
-                {{ form_review.user.as_hidden }}
+                <h4>Critique</h4>
+                <div>
+                    <h5>Titre</h5>
+                    {{ form_review.headline }}
+                    <h5>Note</h5>
+                    {{ form_review.rating }}
+                    <h5>Commentaire</h5>
+                    {{ form_review.body }}
+                    {{ form_review.user.as_hidden }}
+                </div>
             </div>
-        </div>
-        <button>Envoyer</button>
-    </form>
+            <button class="btn btn-primary">Envoyer</button>
+        </form>
+    </div>
 {% endblock %}

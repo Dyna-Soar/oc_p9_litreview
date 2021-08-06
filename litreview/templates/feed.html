@@ -13,9 +13,9 @@
                 {% if ticket.review.exists %}
                 {% else %}
                     <div style="border: 2px solid black;">
+                        Vous avez publié un ticket
                         {{ ticket.title }}<br>
                         {{ ticket.description }}<br>
-                        {{ ticket.user }}<br>
                         <img src="{{ ticket.image.url }}" widht="200px" height="200px"><br>
                         {{ ticket.time_created }}<br>
                         {% if ticket.review.exists %}
@@ -29,14 +29,14 @@
             <br><hr><br>
             {% for review in reviews %}
                 <div style="border: 2px solid black;">
-                    {{ review.user }}<br>
+                    Vous avez publié une critique<br>
                     {{ review.headline }} - {{ review.rating }}<br>
                     {{ review.body }}<br>
                     {{ review.time_created }}<br>
                     <div style="border: 2px solid black; margin: 30px">
+                        Ticket - {{ review.ticket.user }}<br>
                         {{ review.ticket.title }}<br>
                         {{ review.ticket.description }}<br>
-                        {{ review.ticket.user }}<br>
                         <img src="{{ review.ticket.image.url }}" widht="200px" height="200px"><br>
                         {{ review.ticket.time_created }}<br>
                     </div>
