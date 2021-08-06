@@ -1,35 +1,41 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <div>
-        <h4>Suivre d'autres utilisateurs</h4>
-        <form action={% url "add_user_follow" %} method="post">
-            {% csrf_token %}
-            <span>
-                <input name="username_search" id="username_search" placeholder="Nom d'utilisateur">
-                <button id="button_search">Envoyer</button>
-            </span>
-        </form>
-    </div>
+    <div style="margin: 10px; border: 2px solid black; text-align: center">
+        <div>
+            <h4>Suivre d'autres utilisateurs</h4>
+            <form action={% url "add_user_follow" %} method="post">
+                {% csrf_token %}
+                <div class="row" style="margin-left: 600px">
+                    <input name="username_search" id="username_search" placeholder="Nom d'utilisateur">
+                    <button id="button_search" class="btn btn-large btn-primary">Envoyer</button>
+                </div>
+            </form>
+        </div>
 
-    <div>
-        <h4>Abonnements</h4>
-        {% for following in following %}
-            <span>
-                <h5>{{ following.followed_user }}</h5>
-                <form method="post" action={% url "remove_user_follow" %}>
-                    {% csrf_token %}
-                    <input type="hidden" name="followed_user" value="{{ following.followed_user.id }}">
-                    <button>Se désabonner</button>
-                </form>
-            </span>
-        {% endfor %}
-    </div>
+        <div>
+            <h4>Abonnements</h4>
+            {% for following in following %}
+                <div class="row">
+                    <div style="border: 1px solid black; margin-left: 50px; width: 1200px">
+                        <h5 style="text-align: left">{{ following.followed_user }}</h5>
+                    </div>
+                    <form method="post" action={% url "remove_user_follow" %}>
+                        {% csrf_token %}
+                        <input type="hidden" name="followed_user" value="{{ following.followed_user.id }}">
+                        <button class="btn btn-large btn-primary">Se désabonner</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
 
-    <div>
-        <h4>Abonnés</h4>
-        {% for follower in followers %}
-            <h5>{{ follower.user }}</h5>
-        {% endfor %}
+        <div>
+            <h4>Abonnés</h4>
+            {% for follower in followers %}
+                <div style="border: 1px solid black; margin-left: 40px; width: 1200px">
+                    <h5 style="text-align: left">{{ follower.user }}</h5>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

@@ -4,15 +4,15 @@
     <div class="py-5">
         <div class="container" style="text-align: center">
 
-            <a href={% url 'create-ticket' %}><button>Demander une critique</button></a>
-            <a href={% url 'create-review' %}><button>Créer une critique</button></a>
+            <a href={% url 'create-ticket' %}><button class="btn btn-large btn-primary">Demander une critique</button></a>
+            <a href={% url 'create-review' %}><button class="btn btn-large btn-primary">Créer une critique</button></a>
 
             <br><hr>
 
             {% for ticket in tickets %}
                 {% if ticket.review.exists %}
                 {% else %}
-                    <div style="border: 1px solid black;">
+                    <div style="border: 2px solid black;">
                         {{ ticket.title }}<br>
                         {{ ticket.description }}<br>
                         {{ ticket.user }}<br>
@@ -20,7 +20,7 @@
                         {{ ticket.time_created }}<br>
                         {% if ticket.review.exists %}
                         {% else %}
-                            <a href={% url 'create-review-ticket' id=ticket.id %}><button>Répondre à un ticket</button></a>
+                            <a href={% url 'create-review-ticket' id=ticket.id %}><button class="btn btn-large btn-primary">Répondre à un ticket</button></a>
                         {% endif %}
                     </div>
                     <br><hr>
@@ -28,12 +28,12 @@
             {% endfor %}
             <br><hr><br>
             {% for review in reviews %}
-                <div style="border: 1px solid black;">
+                <div style="border: 2px solid black;">
                     {{ review.user }}<br>
                     {{ review.headline }} - {{ review.rating }}<br>
                     {{ review.body }}<br>
                     {{ review.time_created }}<br>
-                    <div style="border: 1px solid black; margin: 30px">
+                    <div style="border: 2px solid black; margin: 30px">
                         {{ review.ticket.title }}<br>
                         {{ review.ticket.description }}<br>
                         {{ review.ticket.user }}<br>
