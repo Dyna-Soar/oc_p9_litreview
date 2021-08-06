@@ -1,20 +1,19 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    {{ ticket.title }}<br>
-    {{ ticket.description }}<br>
-    <img src="{{ ticket.image.url }}" widht="200px" height="200px"><br>
-    <br><hr><br>
-    <h4>Changer le ticket</h4>
+    <h4 style="text-align: center">Modifier votre ticket</h4>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
-            <h4>Livre/Article</h4>
             <div>
                 <h5>Titre</h5>
-                {{ form_ticket.title }}
+                <div style="border: 1px solid black; margin-left: 50px; width: 1200px">
+                    <h5 style="text-align: left">{{ form_ticket.title }}</h5>
+                </div>
                 <h5>Description</h5>
-                {{ form_ticket.description }}
+                <div style="border: 1px solid black; margin-left: 50px; width: 1200px">
+                    {{ form_ticket.description }}
+                </div>
                 <br>
                 <img src="{{ ticket.image.url }}" widht="200px" height="200px"><br>
                 {{ form_ticket.image }}
